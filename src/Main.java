@@ -14,8 +14,11 @@ public class Main
         int[] dataPoints = new int[DATA_POINTS_LENGTH];
         int dataPointsSum = 0;
         int dataPointsAvg = 0;
+        int dataPointsMax = 0;
+        int dataPointsMin = 0;
         int userNum = 0;
         int userNumMatch = 0;
+        //double dataPointsAverage = 0;
         boolean UserNumFound = false;
 
         //Randomizing the Data values
@@ -81,5 +84,37 @@ public class Main
         {
             System.out.println("The number: " + userNum + " was not found in the set.");
         }
+
+        //Now to find the max value and the min value of the set
+        dataPointsMax = dataPoints[0];
+        dataPointsMin = dataPoints[0];
+        for (int i = 0; i < dataPoints.length; i++)
+        {
+            if (dataPoints[i] > dataPointsMax)
+            {
+                dataPointsMax = dataPoints[i];
+            }
+            if (dataPoints[i] < dataPointsMin)
+            {
+                dataPointsMin = dataPoints[i];
+            }
+        }
+        System.out.println("\nThe largest number in the set is: " + dataPointsMax + ".\nThe smallest number in the set is: " + dataPointsMin + ".");
+        System.out.println("");
+
+        //Now to get a double average
+        //dataPointsAverage = getAverage(dataPoints);
+        System.out.println("The exact average of the data points is: " + getAverage(dataPoints) + ".");
+    }
+    public static double getAverage(int values[])
+    {
+        int sum = 0;
+        double average = 0;
+        for (int i = 0; i < values.length; i++)
+        {
+            sum += values[i];
+        }
+        average = ((double) sum / values.length);
+        return average;
     }
 }

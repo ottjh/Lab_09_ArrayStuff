@@ -187,4 +187,15 @@ public class SafeInput
             System.out.print("*");
         }
     }
+    public static double getAverage(int values[])
+    {
+        int sum = 0;
+        double average = 0;
+        for (int i = 0; i < values.length; i++)
+        {
+            sum += values[i];
+        }
+        average = ((double) sum / values.length);
+        return average;
+    }
 }
