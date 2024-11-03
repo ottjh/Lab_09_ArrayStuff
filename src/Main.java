@@ -15,6 +15,8 @@ public class Main
         int dataPointsSum = 0;
         int dataPointsAvg = 0;
         int userNum = 0;
+        int userNumMatch = 0;
+        boolean UserNumFound = false;
 
         //Randomizing the Data values
         for (int i = 0; i < dataPoints.length; i++)
@@ -40,6 +42,44 @@ public class Main
         System.out.println("The average data point is: " + dataPointsAvg + ".");
 
         //Requesting user to input number then checking data points
+        userNum = SafeInput.getRangedInt(in, "Please input a number between 1 and 100", 0, 101);
+        //System.out.println("The user number is: " + userNum + ".");
+         for (int i = 0; i < dataPoints.length; i++)
+         {
+             if (dataPoints[i] == userNum)
+             {
+                 userNumMatch++;
+             }
+         }
+         if (userNumMatch > 0)
+         {
+             System.out.println("You inputted the number: " + userNum + ".\nIt matched a number in the set: " + userNumMatch + " times.");
+         }
+         else
+         {
+             System.out.println("You inputted the number: " + userNum + ". It did not match a number in the set.");
+         }
 
+         //Finding where a number is. User input then increment match
+        userNumMatch = 0;
+         userNum = 0;
+        userNum = SafeInput.getRangedInt(in, "Please input a number between 1 and 100", 0, 101);
+        for (int i = 0; i < dataPoints.length; i++)
+        {
+            if (userNum == dataPoints[i])
+            {
+                userNumMatch = i + 1;
+                UserNumFound = true;
+                break;
+            }
+        }
+        if (UserNumFound)
+        {
+            System.out.println("The number: " + userNum + " was found in the set " + userNumMatch + " spots in.");
+        }
+        else
+        {
+            System.out.println("The number: " + userNum + " was not found in the set.");
+        }
     }
 }
